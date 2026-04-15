@@ -1,0 +1,22 @@
+clc; clear; close all;
+
+L = 11;
+x = ones(1, L);
+h = [1 0 0 0 0.8];
+
+y = conv(x, h);
+
+N = 64;
+
+X = fft(x, N);
+Y = fft(y, N);
+
+H_est = Y ./ X;             
+h_est = ifft(H_est);
+
+figure;
+stem(real(h_est), 'filled',Color='r');
+xlabel('n');
+ylabel('Amplitude');
+title('Estimated Impulse Response (No Noise)');
+grid on;
