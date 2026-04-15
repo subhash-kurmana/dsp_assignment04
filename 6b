@@ -1,0 +1,25 @@
+clc; clear; close all;
+
+x = [1 2 3 4];
+N = 4;
+
+% DFT
+X_dft = fft(x, N);
+
+% DTFT at sampled points
+k = 0:N-1;
+omega = 2*pi*k/N;
+
+X_dtft = zeros(1,N);
+
+for i = 1:N
+    for n = 0:N-1
+        X_dtft(i) = X_dtft(i) + x(n+1)*exp(-1j*omega(i)*n);
+    end
+end
+
+disp('DFT Values:');
+disp(X_dft);
+
+disp('DTFT Sampled Values:');
+disp(X_dtft);
