@@ -1,0 +1,15 @@
+clc; clear; close all;
+
+Wn = 0.2;
+
+[b_iir, a_iir] = butter(4, Wn);
+b_fir = fir1(30, Wn);
+a_fir = 1;
+
+figure;
+grpdelay(b_iir, a_iir);
+title('Group Delay - IIR Filter');
+
+figure;
+grpdelay(b_fir, a_fir);
+title('Group Delay - FIR Filter');
