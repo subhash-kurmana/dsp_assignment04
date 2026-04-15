@@ -1,0 +1,20 @@
+clc; clear; close all;
+
+Fs = 100;
+N = 100;
+
+t = (0:N-1)/Fs;
+
+f0 = 10.5;
+
+x = sin(2*pi*f0*t);
+
+X = fft(x);
+f = (0:N-1)*(Fs/N);
+
+figure;
+plot(f, abs(X), 'LineWidth', 1.5,Color='r');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+title('FFT of 10.5 Hz Signal');
+grid on;
