@@ -1,0 +1,15 @@
+clc; clear; close all;
+
+L = 11;
+x = ones(1, L);
+
+N = 64;
+
+X = fft(x, N);
+
+figure;
+plot(abs(X), 'LineWidth', 1.5,Color='r');
+xlabel('Frequency Index');
+ylabel('|X(k)|');
+title('Magnitude Spectrum of Input Signal');
+grid on;
