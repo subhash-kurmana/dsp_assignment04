@@ -1,0 +1,15 @@
+clc; clear; close all;
+
+L = 11;
+
+x = ones(1, L);             
+h = [1 0 0 0 0.8];           
+
+y = conv(x, h);              
+
+figure;
+stem(y, 'filled',Color='r');
+xlabel('n');
+ylabel('Amplitude');
+title('Output Signal y[n]');
+grid on;
