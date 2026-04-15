@@ -1,0 +1,26 @@
+clc; clear; close all;
+
+N = 100;
+x = [ones(1,20), zeros(1,80)];
+
+Wn = 0.2;
+
+% IIR Butterworth
+[b_iir, a_iir] = butter(4, Wn);
+
+% FIR filter
+b_fir = fir1(30, Wn);
+a_fir = 1;
+
+y_iir = filter(b_iir, a_iir, x);
+y_fir = filter(b_fir, a_fir, x);
+
+n = 0:N-1;
+
+figure;
+plot(n, y_iir, 'r', n, y_fir, 'b', 'LineWidth', 1.5);
+legend('IIR Output', 'FIR Output');
+xlabel('n');
+ylabel('Amplitude');
+title('Comparison of IIR and FIR Outputs');
+grid on;
