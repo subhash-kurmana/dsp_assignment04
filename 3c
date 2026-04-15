@@ -1,0 +1,25 @@
+clc; clear; close all;
+
+L = 11;
+x = ones(1, L);
+h = [1 0 0 0 0.8];
+
+y = conv(x, h);
+
+% Add noise
+y_noisy = y + 0.001*randn(size(y));
+
+N = 64;
+
+X = fft(x, N);
+Y_noisy = fft(y_noisy, N);
+
+H_est_noisy = Y_noisy ./ X;
+h_est_noisy = ifft(H_est_noisy);
+
+figure;
+stem(real(h_est_noisy), 'filled','r');
+xlabel('n');
+ylabel('Amplitude');
+title('Estimated Impulse Response (With Noise)');
+grid on;
